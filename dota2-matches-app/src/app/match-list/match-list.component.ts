@@ -7,7 +7,8 @@ import { DotaApiService } from '../dota-api.service';
   styleUrls: ['./match-list.component.css'],
 })
 export class MatchListComponent implements OnInit {
-  accountId: string = '131018831'; // Substitua pelo ID do jogador desejado
+  accountId: string = '131018831';
+  accountId2: string = '182377283'; // Substitua pelo ID do jogador desejado
   matches: any[] = [];
 
   constructor(private dotaApiService: DotaApiService) {}

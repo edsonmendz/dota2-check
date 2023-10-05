@@ -1,0 +1,26 @@
+<h1>Compare Player Matches</h1>
+
+<form (ngSubmit)="comparePlayers()" #compareForm="ngForm">
+  <div class="form-group">
+    <label for="accountId1">Player 1 Account ID:</label>
+    <input type="text" id="accountId1" name="accountId1" [(ngModel)]="accountId1" required>
+  </div>
+  <div class="form-group">
+    <label for="accountId2">Player 2 Account ID:</label>
+    <input type="text" id="accountId2" name="accountId2" [(ngModel)]="accountId2" required>
+  </div>
+  <button type="submit" [disabled]="compareForm.invalid">Compare</button>
+</form>
+
+<h1>Compare Player Matches</h1>
+
+<form (ngSubmit)="comparePlayers()" #compareForm="ngForm">
+  <!-- ... (mesmo código do passo 2) ... -->
+</form>
+
+<h2>Common Matches</h2>
+<ul>
+  <li *ngFor="let match of commonMatches">
+    Match ID: {{ match.match_id }}, Duration: {{ match.duration }} seconds
+  </li>
+</ul>
