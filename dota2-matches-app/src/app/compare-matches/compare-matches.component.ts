@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DotaApiService } from '../dota-api.service';
-import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +13,7 @@ export class CompareMatchesComponent implements OnInit {
   matches1: any[] = [];
   matches2: any[] = [];
   commonMatches: any[] = [];
+  commonMatchDetails: any[] = [];
 
   constructor(private dotaApiService: DotaApiService) {}
 
@@ -35,5 +35,17 @@ export class CompareMatchesComponent implements OnInit {
     this.commonMatches = this.matches1.filter((match1) =>
       this.matches2.some((match2) => match2.match_id === match1.match_id)
     );
+    // Após encontrar as partidas em comum, obter os detalhes de cada partida.
+    this.getMatchDetailsForCommonMatches();
+  }
+
+  getMatchDetailsForCommonMatches(): void {
+    this.commonMatchDetails = []; // Limpar os detalhes anteriores
+
+    this.commonMatches.forEach((match) => {
+      this.dotaApiService.getMatchDetails(match.match_id).subscribe((matchDetails: any) => {
+        this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
+      });
+    });
   }
 }

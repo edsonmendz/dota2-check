@@ -20,7 +20,21 @@
 
 <h2>Common Matches</h2>
 <ul>
-  <li *ngFor="let match of commonMatches">
-    Match ID: {{ match.match_id }}, Duration: {{ match.duration }} seconds
+  <li *ngFor="let match of commonMatchDetails">
+    <div>
+      <strong>Match ID:</strong> {{ match.match_id }}
+    </div>
+    <div>
+      <strong>Duration:</strong> {{ match.duration }} seconds
+    </div>
+    <div>
+      <strong>Winner:</strong> {{ match.radiant_win ? 'Radiant' : 'Dire' }}
+    </div>
+    <!-- Outras informações da partida -->
+    <div *ngFor="let jogador of match.players">
+      <strong>Jogador:</strong> {{ jogador.personaname }}
+    </div>
+    <hr>
+    <br>
   </li>
 </ul>

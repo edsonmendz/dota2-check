@@ -6,12 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DotaApiService {
-  private apiUrl = 'https://api.opendota.com/api/players';
+  private apiUrl = 'https://api.opendota.com/api';
 
   constructor(private http: HttpClient) {}
 
   getPlayerMatches(accountId: string): Observable<any> {
-    const url = `${this.apiUrl}/${accountId}/matches`;
+    const url = `${this.apiUrl}/players/${accountId}/matches`;
+    return this.http.get(url);
+  }
+
+  getMatchDetails(matchId: string): Observable<any> {
+    const url = `${this.apiUrl}/matches/${matchId}`;
     return this.http.get(url);
   }
 }
