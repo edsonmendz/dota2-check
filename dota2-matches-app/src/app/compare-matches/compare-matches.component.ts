@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./compare-matches.component.css'],
 })
 export class CompareMatchesComponent implements OnInit {
-  accountId1: string = '';
-  accountId2: string = '';
+  accountId1: string = '131018831';
+  accountId2: string = '182377283';
   matches1: any[] = [];
   matches2: any[] = [];
   commonMatches: any[] = [];
