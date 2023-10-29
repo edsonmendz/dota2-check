@@ -1,0 +1,14 @@
+app-topo {
+    height: 30%;
+    justify-content: center;
+    text-align: center;
+    display: block;
+}
+
+app-esquerda {    
+    width: 20%;
+}
+
+app-direita {
+    float: right;
+}

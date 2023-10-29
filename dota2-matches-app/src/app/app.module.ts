@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatchListComponent } from './match-list/match-list.component';
 import { CompareMatchesComponent } from './compare-matches/compare-matches.component';
 import { TopoComponent } from './topo/topo.component';
+import { EsquerdaComponent } from './esquerda/esquerda.component';
+import { DireitaComponent } from './direita/direita.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchListComponent,
     CompareMatchesComponent,
-    TopoComponent
+    TopoComponent,
+    EsquerdaComponent,
+    DireitaComponent
   ],
   imports: [
     BrowserModule,
