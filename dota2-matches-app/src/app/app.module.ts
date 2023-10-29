@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatchListComponent } from './match-list/match-list.component';
 import { CompareMatchesComponent } from './compare-matches/compare-matches.component';
+import { TopoComponent } from './topo/topo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchListComponent,
-    CompareMatchesComponent
+    CompareMatchesComponent,
+    TopoComponent
   ],
   imports: [
     BrowserModule,
