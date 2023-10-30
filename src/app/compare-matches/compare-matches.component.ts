@@ -47,5 +47,28 @@ export class CompareMatchesComponent implements OnInit {
         this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
       });
     });
+    console.log(this.commonMatchDetails)
+  }
+
+  transformarTempo(s:number): string {
+    let hora = 0
+    let horaT = ''
+    let minutoT = ''
+    if (Math.floor(s/60) > 0) {
+      hora = Math.floor(s/3600)
+    }
+    let minuto = Math.floor(s/60)
+    if (minuto > 59) {
+      minutoT = (minuto%60).toString()      
+    }else {
+      minutoT = minuto.toString()
+    }
+    let segundo = (s%60).toString()
+
+    if ( hora > 0 ) {
+      horaT = hora.toString() + ':'
+    }
+
+    return horaT + minutoT + ':' + segundo
   }
 }

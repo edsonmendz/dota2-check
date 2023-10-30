@@ -1,5 +1,25 @@
 p {
     font-size: 11px;
-    background-color: red;
+    
     margin: 0;
+}
+
+label {
+    font-size: 12px;
+}
+
+input {
+    font-size: 12px;
+}
+
+br {
+    size: 0.6em;
+}
+
+button {
+    font-size: 12px;
+}
+
+ul {
+    list-style: none;
 }

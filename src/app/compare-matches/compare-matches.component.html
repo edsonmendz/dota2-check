@@ -2,43 +2,45 @@
 
 <form (ngSubmit)="comparePlayers()" #compareForm="ngForm">
   <div class="container">
-    <div class="row justify-content-around">
-      <div class="col-6">
+    <div class="row justify-content-center">
+      <div class="col-3">
         <div class="form-group">
-          <label for="accountId1">Jogador 1: </label>
+          <label for="accountId1">Jogador 1: &nbsp;</label>
           <input type="text" placeholder="Digite o ID" id="accountId1" name="accountId1" [(ngModel)]="accountId1" required>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-3">
         <div class="form-group">
-          <label for="accountId2">Jogador 2: </label>
+          <label for="accountId2">Jogador 2: &nbsp;</label>
           <input type="text" placeholder="Digite o ID" id="accountId2" name="accountId2" [(ngModel)]="accountId2" required>
         </div>
       </div>
+      <div class="col-2 align-self-end">
+        <button type="submit" [disabled]="compareForm.invalid">Comparar</button>
+      </div>
     </div>
   </div>
-  <br>
-  <button type="submit" [disabled]="compareForm.invalid">Comparar</button>
 </form>
 <br>
 
-<h1>Partidas em comum</h1>
+
 
 <form (ngSubmit)="comparePlayers()" #compareForm="ngForm">
   <!-- ... (mesmo código do passo 2) ... -->
 </form>
 
 <ul>
+  <h4>Partidas em comum</h4>
   <li *ngFor="let match of commonMatchDetails" class="container">
     <div class="row">
       <div class="col-4">
         <strong>ID da partida:</strong> {{ match.match_id }}
       </div>
       <div class="col-4">
-        <strong>Duração:</strong> {{ match.duration }} segundos
+        <strong>Duração:</strong> {{transformarTempo(match.duration)}}
       </div>
       <div class="col-4">
-        <strong>Vencedor:</strong> {{ match.radiant_win ? 'Radiant' : 'Dire' }}
+        <strong>Vencedor:</strong> {{ match.radiant_win ? 'Iluminados' : 'Temidos' }}
       </div>
     </div>
     <br>
@@ -48,14 +50,14 @@
         <div class="col-6">
           <div *ngFor="let jogador of match.players">
             <div *ngIf="jogador.player_slot < 5">
-              <p><strong>{{ jogador.personaname }} </strong> ID: <strong>{{ jogador.account_id}}</strong></p>
+              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong>{{jogador.account_id ? jogador.account_id : 'Não Compartilhado'}}</strong></p>
             </div>        
           </div>
         </div>
         <div class="col-6">
           <div *ngFor="let jogador of match.players">
             <div *ngIf="jogador.player_slot > 127">
-              <p>Jogador:  <strong>{{ jogador.personaname }} </strong> ID: <strong>{{ jogador.account_id}}</strong></p>
+              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong>{{jogador.account_id ? jogador.account_id : 'Não Compartilhado'}}</strong></p>
             </div>
           </div>
         </div> 
