@@ -1,14 +1,8 @@
 app-topo {
-    height: 30%;
+    height: 6em;
+    width: 80%;
     justify-content: center;
     text-align: center;
-    display: block;
-}
-
-app-esquerda {    
-    width: 20%;
-}
-
-app-direita {
-    float: right;
+    background-color: green;
+    
 }
