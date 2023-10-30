@@ -1,11 +1,9 @@
 * {
-    margin: 0px;
-    justify-content: center;
+    margin: 0px;    
     text-align: center;
 }
 
-p {
-    height: 3em;
+p {    
     width: 100%;
     background-color: red;
 }

@@ -11,6 +11,8 @@ import { TopoComponent } from './topo/topo.component';
 import { EsquerdaComponent } from './esquerda/esquerda.component';
 import { DireitaComponent } from './direita/direita.component';
 
+import { TempoPipe } from './tempo.pipe.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { DireitaComponent } from './direita/direita.component';
     CompareMatchesComponent,
     TopoComponent,
     EsquerdaComponent,
-    DireitaComponent
+    DireitaComponent,
+    TempoPipe
   ],
   imports: [
     BrowserModule,

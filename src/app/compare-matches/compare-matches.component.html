@@ -3,13 +3,13 @@
 <form (ngSubmit)="comparePlayers()" #compareForm="ngForm">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-3">
+      <div class="col-4">
         <div class="form-group">
           <label for="accountId1">Jogador 1: &nbsp;</label>
           <input type="text" placeholder="Digite o ID" id="accountId1" name="accountId1" [(ngModel)]="accountId1" required>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-4">
         <div class="form-group">
           <label for="accountId2">Jogador 2: &nbsp;</label>
           <input type="text" placeholder="Digite o ID" id="accountId2" name="accountId2" [(ngModel)]="accountId2" required>
@@ -37,7 +37,7 @@
         <strong>ID da partida:</strong> {{ match.match_id }}
       </div>
       <div class="col-4">
-        <strong>Duração:</strong> {{transformarTempo(match.duration)}}
+        <strong>Duração:</strong> {{match.duration | tempoFormat}}
       </div>
       <div class="col-4">
         <strong>Vencedor:</strong> {{ match.radiant_win ? 'Iluminados' : 'Temidos' }}
@@ -50,14 +50,14 @@
         <div class="col-6">
           <div *ngFor="let jogador of match.players">
             <div *ngIf="jogador.player_slot < 5">
-              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong>{{jogador.account_id ? jogador.account_id : 'Não Compartilhado'}}</strong></p>
+              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong *ngIf="jogador.account_id; else naocompartilhado"> {{jogador.account_id}} <button class="btnNumero" (click)="trocar1(jogador.account_id)">1</button>&nbsp;<button class="btnNumero" (click)="trocar2(jogador.account_id)">2</button></strong><ng-template #naocompartilhado>Não Compartilhado</ng-template></p>
             </div>        
           </div>
         </div>
         <div class="col-6">
           <div *ngFor="let jogador of match.players">
             <div *ngIf="jogador.player_slot > 127">
-              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong>{{jogador.account_id ? jogador.account_id : 'Não Compartilhado'}}</strong></p>
+              <p><strong>{{ jogador.personaname ? jogador.personaname : '' }} </strong> ID: <strong *ngIf="jogador.account_id; else naocompartilhado"> {{jogador.account_id}} <button class="btnNumero" (click)="trocar1(jogador.account_id)">1</button>&nbsp;<button class="btnNumero" (click)="trocar2(jogador.account_id)">2</button></strong><ng-template #naocompartilhado>Não Compartilhado</ng-template></p>
             </div>
           </div>
         </div> 
