@@ -29,13 +29,13 @@
   <li *ngFor="let match of commonMatchDetails" class="container">
     <div class="row">
       <div class="col-4">
-        <strong>ID da partida:</strong> {{ match.match_id }}
+        <p><strong>ID da partida:</strong> {{ match.match_id }}</p>
       </div>
       <div class="col-4">
-        <strong>Duração:</strong> {{match.duration | tempoFormat}}
+        <p><strong>Duração:</strong> {{match.duration | tempoFormat}}</p>
       </div>
       <div class="col-4">
-        <strong>Vencedor:</strong> {{ match.radiant_win ? 'Iluminados' : 'Temidos' }}
+        <p><strong>Vencedor:</strong> {{ match.radiant_win ? 'Iluminados' : 'Temidos' }}</p>
       </div>
     </div>
     <br>

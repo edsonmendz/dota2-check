@@ -15,8 +15,8 @@
 }
 
 .logo {  
-    margin-left: 50%;
-    font-size: 45px;
+    margin-left: 40%;
+    font-size: 60px;
     font-family: Metal, Arial;
     font-weight: 400;
     letter-spacing: 1px;
@@ -29,7 +29,7 @@
 }
 
 .definicao {    
-    font-size: 23px;
+    font-size: 26px;
     color: white;
     display: inline-block;
 }
