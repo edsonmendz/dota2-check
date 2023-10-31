@@ -8,6 +8,7 @@ import { DotaApiService } from '../dota-api.service';
   styleUrls: ['./compare-matches.component.css'],
 })
 export class CompareMatchesComponent implements OnInit {
+  busca: number = 0
   accountId1: string = '131018831';
   accountId2: string = '182377283';
   matches1: any[] = [];
@@ -29,6 +30,7 @@ export class CompareMatchesComponent implements OnInit {
         });
       });
     }
+    this.busca = 1
   }
 
   findCommonMatches(): void {
@@ -47,6 +49,8 @@ export class CompareMatchesComponent implements OnInit {
         this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
       });
     });
+
+    this.busca = 2
   }
 
   trocar1(m:any): void {

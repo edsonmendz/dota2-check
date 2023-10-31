@@ -1,9 +1,23 @@
 * {
-    margin: 0px;    
-    text-align: center;
+    margin: 0px;  
+    padding: 0px;
 }
 
-p {    
+@font-face {
+    font-family: Metal;
+    src: url("../../assets/font/MetalMania-Regular.ttf") format("truetype");
+}
+
+.geral {
     width: 100%;
-    background-color: red;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(24,80,34,1) 0%, rgba(23,121,12,1) 35%, rgba(29,153,19,1) 100%);   
+}
+
+p {  
+    margin-left: 15%;
+    font-size: 45px;
+    font-family: Metal, Arial;
+    color: linear-gradient(90deg, rgba(235,233,81,1) 0%, rgba(160,161,30,1) 35%, rgba(206,207,45,1) 100%);
+    text-shadow: 2px 2px red;
 }
