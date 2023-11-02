@@ -28,13 +28,16 @@
   <h4 *ngIf="busca == 2">Partidas encontradas:</h4>
   <li *ngFor="let match of commonMatchDetails" class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <p><strong>ID da partida:</strong> {{ match.match_id }}</p>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <p><strong>Duração:</strong> {{match.duration | tempoFormat}}</p>
       </div>
-      <div class="col-4">
+      <div class="col-3">
+        <p><strong>Data:</strong> {{match.start_time*1000 | date: 'dd-MM-yyyy hh:mm'}}</p>
+      </div>
+      <div class="col-3">
         <p><strong>Vencedor:</strong> {{ match.radiant_win ? 'Iluminados' : 'Temidos' }}</p>
       </div>
     </div>
