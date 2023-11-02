@@ -9,8 +9,8 @@ import { DotaApiService } from '../dota-api.service';
 })
 export class CompareMatchesComponent implements OnInit {
   busca: number = 0
-  accountId1: string = '';
-  accountId2: string = '';
+  accountId1: string = '131018831';
+  accountId2: string = '59025497';
   matches1: any[] = [];
   matches2: any[] = [];
   commonMatches: any[] = [];
