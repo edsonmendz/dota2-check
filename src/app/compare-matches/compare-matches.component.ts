@@ -10,7 +10,7 @@ import { DotaApiService } from '../dota-api.service';
 export class CompareMatchesComponent implements OnInit {
   busca: number = 0
   accountId1: string = '131018831';
-  accountId2: string = '59025497';
+  accountId2: string = '20364569';
   matches1: any[] = [];
   matches2: any[] = [];
   commonMatches: any[] = [];
@@ -49,26 +49,34 @@ export class CompareMatchesComponent implements OnInit {
       this.dotaApiService.getMatchDetails(match.match_id).subscribe((matchDetails: any) => {
         this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
       });
-    });
+    });  
 
     this.busca = 2
   }
 
   
   filterOppositeTeamMatches(): void {
-    this.commonMatchDetails = this.commonMatchDetails.filter((match) => {
-      const player1Team = match.players.find((player:any) => player.account_id === this.accountId1);
-      const player2Team = match.players.find((player:any) => player.account_id === this.accountId2);
-
-      if  ((player1Team.player_slot < 128 && player2Team.player_slot >= 128) ||
-      (player1Team.player_slot >= 128 && player2Team.player_slot < 128)) {
-        this.partidasFiltradas.push(match)
+    
+    for (const match of this.commonMatchDetails) {
+      let player1Team = null;
+      let player2Team = null;
+      for (const player of match.players) {
+        
+        if (player.account_id == this.accountId1) {
+          player1Team = player.player_slot;
+        } else if (player.account_id == this.accountId2) {
+          player2Team = player.player_slot;
+        }
       }
-      this.busca = 3
-      console.log(this.partidasFiltradas)         
-    });
-  }
 
+      if (player1Team && player2Team) {        
+        if ((player1Team < 128 && player2Team >= 128) || (player1Team >= 128 && player2Team < 128)) {          
+          this.partidasFiltradas.push(match);
+        }
+      }
+    }
+    this.busca = 4
+  }
 
   trocar1(m:any): void {
     this.accountId1 = m
