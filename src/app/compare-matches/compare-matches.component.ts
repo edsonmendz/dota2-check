@@ -15,6 +15,7 @@ export class CompareMatchesComponent implements OnInit {
   matches2: any[] = [];
   commonMatches: any[] = [];
   commonMatchDetails: any[] = [];
+  partidasFiltradas: any[] = [];
 
   constructor(private dotaApiService: DotaApiService) {}
 
@@ -52,6 +53,22 @@ export class CompareMatchesComponent implements OnInit {
 
     this.busca = 2
   }
+
+  
+  filterOppositeTeamMatches(): void {
+    this.commonMatchDetails = this.commonMatchDetails.filter((match) => {
+      const player1Team = match.players.find((player:any) => player.account_id === this.accountId1);
+      const player2Team = match.players.find((player:any) => player.account_id === this.accountId2);
+
+      if  ((player1Team.player_slot < 128 && player2Team.player_slot >= 128) ||
+      (player1Team.player_slot >= 128 && player2Team.player_slot < 128)) {
+        this.partidasFiltradas.push(match)
+      }
+      this.busca = 3
+      console.log(this.partidasFiltradas)         
+    });
+  }
+
 
   trocar1(m:any): void {
     this.accountId1 = m

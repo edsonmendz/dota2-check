@@ -25,7 +25,8 @@
 
 <ul>
   <h4 *ngIf="busca == 1">Procurando partidas em comum</h4>
-  <h4 *ngIf="busca == 2">Partidas encontradas: {{commonMatchDetails.length}}</h4>
+  <h4 *ngIf="busca > 1">Partidas encontradas: {{commonMatchDetails.length}}</h4>
+  <h5 *ngIf="busca == 3">Partidas contra: {{partidasFiltradas.length}}</h5>
   <li *ngFor="let match of commonMatchDetails" class="container">
     <div class="row">
       <div class="col-3">
