@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DotaApiService } from '../dota-api.service';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -19,7 +20,10 @@ export class CompareMatchesComponent implements OnInit {
 
   constructor(private dotaApiService: DotaApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.getMatchDetailsForCommonMatches();
+  }
 
   comparePlayers(): void {
     if (this.accountId1 && this.accountId2) {
@@ -45,22 +49,19 @@ export class CompareMatchesComponent implements OnInit {
   getMatchDetailsForCommonMatches(): void {
     this.commonMatchDetails = []; // Limpar os detalhes anteriores
 
-    this.commonMatches.forEach((match) => {
-      this.dotaApiService.getMatchDetails(match.match_id).subscribe((matchDetails: any) => {
-        this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
-      });
-    });
-    
-    setTimeout(()=> {
+    const observables = this.commonMatches.map(match => this.dotaApiService.getMatchDetails(match.match_id));
+    console.log('dentro do detalhe')
+    forkJoin(observables).subscribe((matches: any[]) => {
+      console.log('dentro do forkjoin')
+      this.commonMatchDetails = matches;
       this.filterOppositeTeamMatches();
-    }, 3000)
-
-    console.log(this.partidasFiltradas)
-    this.busca = 2
+      this.busca = 2
+    });    
   }
 
   
   filterOppositeTeamMatches(): void {
+    this.partidasFiltradas = []
     
     for (const match of this.commonMatchDetails) {
       let player1Team = null;
