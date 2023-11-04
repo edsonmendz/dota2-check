@@ -49,8 +49,13 @@ export class CompareMatchesComponent implements OnInit {
       this.dotaApiService.getMatchDetails(match.match_id).subscribe((matchDetails: any) => {
         this.commonMatchDetails.push(matchDetails); // Adicionar detalhes à matriz
       });
-    });  
+    });
+    
+    setTimeout(()=> {
+      this.filterOppositeTeamMatches();
+    }, 3000)
 
+    console.log(this.partidasFiltradas)
     this.busca = 2
   }
 
@@ -75,7 +80,6 @@ export class CompareMatchesComponent implements OnInit {
         }
       }
     }
-    this.busca = 4
   }
 
   trocar1(m:any): void {
